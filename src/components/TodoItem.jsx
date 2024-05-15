@@ -1,7 +1,10 @@
 // import React from "react";
 import PropTypes from "prop-types";
+import { TodoContext } from "../App";
+import { useContext } from "react";
 
-const TodoItem = ({ todo, toggleCompleted, deleteButton }) => {
+const TodoItem = ({ todo }) => {
+  const { toggleCompleted, deleteTodo } = useContext(TodoContext);
   const getTodoTitleStyle = () => {
     if (todo.completed === true) {
       return { textDecoration: "line-through" };
@@ -18,7 +21,7 @@ const TodoItem = ({ todo, toggleCompleted, deleteButton }) => {
         onChange={() => toggleCompleted(todo.id)}
       />
       <p style={getTodoTitleStyle()}>{todo.title}</p>
-      <button onClick={() => deleteButton(todo.id)} style={styles.button}>
+      <button onClick={() => deleteTodo(todo.id)} style={styles.button}>
         x
       </button>
     </div>
@@ -56,8 +59,6 @@ TodoItem.propTypes = {
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
   }).isRequired,
-  toggleCompleted: PropTypes.func,
-  deleteButton: PropTypes.func,
 };
 
 export default TodoItem;

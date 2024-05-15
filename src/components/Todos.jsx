@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import TodoItem from "./TodoItem";
 
-const Todos = ({ todos, toggleCompleted }) => {
+const Todos = ({ todos, toggleCompleted, deleteButton }) => {
   return (
     <div style={styles.container}>
       {todos.map((todo) => {
@@ -11,6 +11,7 @@ const Todos = ({ todos, toggleCompleted }) => {
             key={todo.id}
             todo={todo}
             toggleCompleted={toggleCompleted}
+            deleteButton={deleteButton}
           />
         );
       })}
@@ -34,6 +35,7 @@ Todos.propTypes = {
     })
   ).isRequired,
   toggleCompleted: PropTypes.func,
+  deleteButton: PropTypes.func,
 };
 
 export default Todos;

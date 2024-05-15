@@ -35,13 +35,22 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const deleteButton = (todoid) => {
+    const result = todos.filter((todo) => todo.id !== todoid);
+    setTodos(result);
+  };
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>My Todo List</h1>
       {/* {todos.map((todo) => {
         return <p key={todo.id}>{todo.title}</p>;
       })} */}
-      <Todos todos={todos} toggleCompleted={toggleCompleted} />
+      <Todos
+        todos={todos}
+        toggleCompleted={toggleCompleted}
+        deleteButton={deleteButton}
+      />
     </div>
   );
 }
